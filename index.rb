@@ -2,7 +2,7 @@ require "uri"
 require "net/http"
 require "json"
 
-def request(url)
+def request (url)
     url = URI(url)
 
     https = Net::HTTP.new(url.host, url.port)
@@ -13,7 +13,7 @@ def request(url)
     response = https.request(request)
     results = JSON.parse(response.read_body)
 end
-puts request("https://api.nasa.gov/planetary/apod?api_key=ggRQ9HgxkoT1wuW4vr9JDDBSunVQGIUzOXF34Xhg")
 
-puts
+data = request("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&page=2&api_key=ggRQ9HgxkoT1wuW4vr9JDDBSunVQGIUzOXF34Xhg")[0..9]
+
 
